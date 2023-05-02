@@ -41,6 +41,7 @@ sn0int                              : Semi-automatic OSINT framework and package
 ```
 
 #### Devtools
+##### vim is applied custom blackarch-config-vim mod by default
 ```
 base-devel(into gcc and make etc...): Basic tools to build Arch Linux packages
 nasm                                : 80x86 assembler designed for portability and modularity
@@ -52,4 +53,5 @@ npm                                 : A package manager for javascript
 python                              : Next generation of the python high-level scripting language
 python-pip                          : The PyPA recommended tool for installing Python packages
 rustup                              : The Rust toolchain installer
+vim                                 : Vi Improved, a highly configurable, improved version of the vi text editor
 ```
