@@ -22,7 +22,7 @@ RUN pacman -Syy &&\
  # Dev tools
 RUN pacman -S --noconfirm base-devel nasm clang ruby lua nodejs npm python python-pip rustup
 RUN pacman -S --noconfirm blackarch-config-vim blackarch-config-zsh\
-              vim zsh nodejs npm &&\
+              vim zsh &&\
               cp -a /usr/share/blackarch/config/vim/vim ~/.vim &&\
               cp -a /usr/share/blackarch/config/vim/vimrc ~/.vimrc &&\
               cp -a /usr/share/blackarch/config/zsh/zshrc ~/.zshrc
