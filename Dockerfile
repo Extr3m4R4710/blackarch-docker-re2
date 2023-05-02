@@ -10,7 +10,7 @@ RUN pacman -Syy &&\
             echo 'Server = https://download.nus.edu.sg/mirror/blackarch/$repo/os/$arch' >> /etc/pacman.d/blackarch-mirrorlist &&\
             pacman -Syu --noconfirm && pacman -S --noconfirm \
  # |Defensive
-            tor torsocks proxychains\
+            tor torsocks proxychains-ng\
  # |Scanner
             nmap masscan zmap sqlmap\
  # |Recon
