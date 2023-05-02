@@ -12,3 +12,15 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for pene
 
 ## Why redesign?
 Blackarch containers naturally inherit ArchLinux images. Therefore, only en_* type languages **can be used**. This didn't seem to stop in the process of lightweighting ArchLinux containers. Have a look at [this](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59). Therefore, we redesigned it based on the multilingual and easy-to-use Manjaro system. This allows non-latin characters to be typed into the console
+
+## Tools & Package
+#### Defensive
+```
+tor:            Anonymizing overlay network
+torsocks:       Wrapper to safely torify applications
+proxychains-ng: A hook preloader that allows to redirect TCP traffic of existing dynamically linked programs through one or more SOCKS or HTTP proxies
+```
+#### Scanner
+```
+
+```
