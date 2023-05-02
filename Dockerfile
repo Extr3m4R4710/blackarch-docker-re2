@@ -19,6 +19,7 @@ RUN pacman -Syy &&\
             metasploit msfdb &&\
  # Initialization torrc
             rm /etc/tor/torrc && :> /etc/tor/torrc
+ # Dev tools
 RUN pacman -S --noconfirm base-devel nasm clang ruby lua nodejs npm python python-pip rustup
 RUN pacman -S --noconfirm blackarch-config-vim blackarch-config-zsh\
               vim zsh nodejs npm &&\
