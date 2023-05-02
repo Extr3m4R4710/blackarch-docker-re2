@@ -17,6 +17,7 @@ RUN pacman -Syy &&\
             sn0int recon-ng phoneinfoga bind-tools\
  # |exploitation
             metasploit msfdb &&\
+ # Initialization torrc
             rm /etc/tor/torrc && :> /etc/tor/torrc
 RUN pacman -S --noconfirm base-devel nasm clang ruby lua nodejs npm python python-pip rustup
 RUN pacman -S --noconfirm blackarch-config-vim blackarch-config-zsh\
