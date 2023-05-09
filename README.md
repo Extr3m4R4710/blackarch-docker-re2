@@ -30,7 +30,7 @@ zmap                                : Fast network scanner designed for Internet
 #### exploitation
 ```
 metasploit                          : Advanced open-source platform for developing, testing, and using exploit code
-msfdb                               : Manage the metasploit framework database
+msfdb                               : Manage the metasploit framework database. This package known as msfdb-blackarch
 ```
 #### Recon
 ```
