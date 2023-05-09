@@ -4,19 +4,23 @@ COPY .vim/ /root/.vim
 COPY .vimrc /root/
 RUN pacman-mirrors -f3 && pacman -Syy &&\
             pacman -S --noconfirm curl &&\
-            curl -sL blackarch.org/strap.sh | bash - &&\
-            pacman -Syyu --noconfirm &&\
+            curl -sL blackarch.org/strap.sh | bash - ;\
             :> /etc/pacman.d/blackarch-mirrorlist &&\
             echo 'Server = https://download.nus.edu.sg/mirror/blackarch/$repo/os/$arch' >> /etc/pacman.d/blackarch-mirrorlist &&\
-            pacman -Syu --noconfirm && pacman -S --noconfirm \
+            pacman -Syyu --noconfirm &&\
+            pacman -S --noconfirm\
  # |Defensive
             tor torsocks proxychains-ng\
  # |Scanner
-            nmap masscan zmap sqlmap\
+            nmap masscan zmap sqlmap smbmap nikto\
  # |Recon
             sn0int recon-ng phoneinfoga bind-tools\
  # |exploitation
-            metasploit msfdb &&\
+            metasploit msfdb\
+ # |fuzzer
+            feroxbuster dirb\
+ # |cracker 
+            john hashcat hydra &&\
  # Initialization torrc
             rm /etc/tor/torrc && :> /etc/tor/torrc
  # Dev tools
