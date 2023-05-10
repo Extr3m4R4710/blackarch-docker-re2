@@ -25,7 +25,7 @@ RUN pacman-mirrors -f3 && pacman -Syy &&\
             rm /etc/tor/torrc && :> /etc/tor/torrc
  # Dev tools
 RUN pacman -S --noconfirm base-devel nasm clang ruby lua nodejs npm python python-pip rustup
-RUN pacman -S --noconfirm blackarch-config-zsh vim zsh &&\
+RUN pacman -S --noconfirm blackarch-config-zsh sqlite p7zip vim zsh &&\
               cp -a /usr/share/blackarch/config/zsh/zshrc ~/.zshrc
 
 CMD ["/usr/bin/zsh"]
