@@ -92,7 +92,7 @@ set noswapfile
 set foldlevelstart=0
 set wildmenu
 set wildmode=list:longest,full
-set nowrap
+"set nowrap
 set statusline=%{getcwd()}\/\%f%=%-14.(%l,%c%V%)\ %P
 set autoread
 set conceallevel=2

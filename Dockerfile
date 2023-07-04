@@ -2,9 +2,10 @@ FROM manjarolinux/base
 ENV TERM=xterm-256color
 COPY .vim/ /root/.vim
 COPY .vimrc /root/
+COPY .bashrc /root/
 RUN pacman-mirrors -f3 && pacman -Syy &&\
             pacman -S --noconfirm curl &&\
-            curl -sL blackarch.org/strap.sh | bash - ;\
+            curl -sL blackarch.org/strap.sh | bash - \
             :> /etc/pacman.d/blackarch-mirrorlist &&\
             echo 'Server = https://download.nus.edu.sg/mirror/blackarch/$repo/os/$arch' >> /etc/pacman.d/blackarch-mirrorlist &&\
             pacman -Syyu --noconfirm &&\
@@ -28,4 +29,4 @@ RUN pacman -S --noconfirm base-devel nasm clang ruby lua nodejs npm python pytho
 RUN pacman -S --noconfirm blackarch-config-zsh jq bat exa sqlite p7zip vim zsh &&\
               cp -a /usr/share/blackarch/config/zsh/zshrc ~/.zshrc
 
-CMD ["/usr/bin/zsh"]
+CMD ["/usr/bin/bash"]
