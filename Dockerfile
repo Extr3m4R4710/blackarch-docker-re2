@@ -2,7 +2,6 @@ FROM manjarolinux/base
 ENV TERM=xterm-256color
 COPY .vim/ /root/.vim
 COPY .vimrc /root/
-COPY .bashrc /root/
 RUN pacman-mirrors -f3 && pacman -Syy &&\
             pacman -S --noconfirm curl &&\
             curl -sL blackarch.org/strap.sh | bash - \
@@ -28,5 +27,7 @@ RUN pacman-mirrors -f3 && pacman -Syy &&\
 RUN pacman -S --noconfirm base-devel nasm clang ruby lua nodejs npm python python-pip rustup
 RUN pacman -S --noconfirm blackarch-config-zsh jq bat exa sqlite p7zip vim zsh bash &&\
               cp -a /usr/share/blackarch/config/zsh/zshrc ~/.zshrc
+
+COPY .bashrc /root/
 
 CMD ["/usr/bin/bash"]
