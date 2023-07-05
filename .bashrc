@@ -3,17 +3,18 @@ darkgrey="$(tput setaf 8)"
 white="$(tput setaf 15)"
 blue="$(tput setaf 12)"
 cyan="$(tput setaf 14)"
+red="$(tput setaf 8)"
 nc="$(tput sgr0)"
 
 # exports
 export PATH="${HOME}/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:"
 export PATH="${PATH}/usr/local/sbin:/opt/bin:/usr/bin/core_perl:/usr/games/bin:"
 
-export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└╼\[$cyan\]\\#>>> \[$nc\]"
-
-export LD_PRELOAD=""
-export EDIT
-
+if [[ \$? != 0 ]] then
+    export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└-[\[$cyan\]*]╼\[$cyan\]\\#>>> \[$nc\]"
+else
+     export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└-\[$red\][X]\[$blue\]╼\[$cyan\]\\#>>> \[$nc\]"
+fi
 # alias
 alias ls="ls --color"
 alias vi="vim"
