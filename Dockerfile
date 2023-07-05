@@ -1,3 +1,7 @@
+## If you have problems with blackarch's mirror server, please see here
+## https://raw.githubusercontent.com/Extr3m4R4710/BlackArchMirrors/master/blackarch-mirrors
+
+
 FROM manjarolinux/base
 ENV TERM=xterm-256color
 COPY .vim/ /root/.vim
