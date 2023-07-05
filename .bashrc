@@ -10,9 +10,8 @@ nc="$(tput sgr0)"
 export PATH="${HOME}/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:"
 export PATH="${PATH}/usr/local/sbin:/opt/bin:/usr/bin/core_perl:/usr/games/bin:"
 
+export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└--\[$darkgrey\][\[$red\]$?\[$darkgrey\]]\[$blue\]╼\[$cyan\]#>> \[$nc\]"
 
-export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└-\[$darkgrey\][\[$red\]$?\[$darkgrey\]]\[$blue\]╼\[$cyan\]\\#>>> \[$nc\]"
-fi
 # alias
 alias ls="ls --color"
 alias vi="vim"
@@ -42,7 +41,6 @@ remoteshell()
 myip()
 {
   curl -sL ip-api.com/json | jq .
-a
 }
 
 
