@@ -10,7 +10,7 @@ nc="$(tput sgr0)"
 export PATH="${HOME}/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:"
 export PATH="${PATH}/usr/local/sbin:/opt/bin:/usr/bin/core_perl:/usr/games/bin:"
 
-export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└--\[$darkgrey\][\[$red\]$?\[$darkgrey\]]\[$blue\]╼\[$cyan\]#>> \[$nc\]"
+export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└--\[$blue\]╼\[$cyan\]#>> \[$nc\]"
 
 # alias
 alias ls="ls --color"
