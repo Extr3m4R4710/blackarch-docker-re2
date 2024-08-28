@@ -10,7 +10,7 @@ vimには[blackarch-config-vim](https://github.com/BlackArch/blackarch-config-vi
 Coming Soon
 
 ## なぜ再設計したのか？
-Blackarch コンテナは当然 ArchLinux イメージを継承します。したがって、en_* タイプの言語**のみ**を使用できます。これは、ArchLinux コンテナーの軽量化の過程で止む終えなかったようです。 詳しくは[こちらをご覧ください](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59)。そこで、多言語対応で使いやすいManjaroシステムをベースに再設計しました。これにより、非ラテン文字(日本語、中国語、韓国語、ロシア語)をコンソールに入力できます
+Blackarch コンテナは当然 ArchLinux イメージを継承します。したがって、en_* タイプの言語**のみ**を使用できます。これは、ArchLinux コンテナーの軽量化の過程で止む終えなかったようです。 詳しくは[こちらをご覧ください](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59)。そこで、多言語対応で使いやすいManjaroシステムをベースに再設計しました。これにより、非ラテン文字(日本語、中国語、韓国語、ロシア語、アラビア語)をコンソールに入力できます
 
 ## Tools & Package
 #### Defensive
