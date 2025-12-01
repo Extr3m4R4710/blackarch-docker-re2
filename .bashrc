@@ -1,16 +1,26 @@
+## v1.0.3
+neofetch --ascii_distro blackarch
 # colors
 darkgrey="$(tput setaf 8)"
 white="$(tput setaf 15)"
 blue="$(tput setaf 12)"
 cyan="$(tput setaf 14)"
-red="$(tput setaf 8)"
+red="$(tput setaf 9)"
+green="$(tput setaf 35)"
 nc="$(tput sgr0)"
 
 # exports
 export PATH="${HOME}/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:"
-export PATH="${PATH}/usr/local/sbin:/opt/bin:/usr/bin/core_perl:/usr/games/bin:"
+export PATH="${PATH}/usr/local/sbin:/opt/bin:/usr/bin/core_perl:/usr/games/bin:var/lib/snapd/snap/bin:"
 
-export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└--\[$blue\]╼\[$cyan\]#>> \[$nc\]"
+if [[ $EUID -eq 0 ]]; then
+  export PS1="\[$red\][ \[$darkgrey\]\u@\[$green\]\H \[$darkgrey\]\W\[$darkgrey\] \[$red\]]\[$green\]:\[$darkgrey\]# \[$nc\]"
+else
+  export PS1="\[$red\][ \[$darkgrey\]\u@\[$green\]\H \[$darkgrey\]\W\[$darkgrey\] \[$red\]]\[$green\]:\[$darkgrey\]% \[$nc\]"
+fi
+
+export LD_PRELOAD=""
+export EDITOR="vim"
 
 # alias
 alias ls="ls --color"
@@ -20,27 +30,18 @@ alias shred="shred -uvzf"
 alias nmap="nmap -vvv -Pn --dns-server 1.1.1.1"
 alias wget="wget -U 'noleak'"
 alias curl="curl --user-agent 'noleak'"
-
-# source files
-[ -r /usr/share/bash-completion/completions ] &&
-  . /usr/share/bash-completion/completions/*
-
+alias neofetch_blue="neofetch --ascii_colors 4 4 0 4 --colors 4 4 4 4 --ascii_distro blackarch"
+alias neofetch="neofetch --ascii_distro blackarch"
 
 # custom functions
+#
 
-en()
+ops-mode()
 {
-  echo -e "$blue[$cyan*$blue]$ne $cyan EN => JA"
-  echo "$1" | trans en:ja -
+  export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└-\[$blue\]╼\[$cyan\]#>> \[$nc\]"
 }
 
-ja()
-{
-  echo -e "$blue[$cyan*$blue]$ne $cyan JA => EN"
-  echo "$1" | trans ja:en -
-}
-# domain OSINT function that curl-base whois and dig-command like record views 
-clwhois()
+curlwhois()
 {
   curl -sL http://cli.fyi/$1 | jq .
 }
@@ -70,4 +71,7 @@ wiki()
 
 }
 
-
+whatime()
+{
+  date +"%Y-%m-%d %H:%M"
+}
