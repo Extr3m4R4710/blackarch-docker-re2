@@ -1,5 +1,5 @@
 ## v1.0.3
-neofetch --ascii_distro blackarch
+fastfetch
 # colors
 darkgrey="$(tput setaf 8)"
 white="$(tput setaf 15)"
@@ -7,6 +7,11 @@ blue="$(tput setaf 12)"
 cyan="$(tput setaf 14)"
 red="$(tput setaf 9)"
 green="$(tput setaf 35)"
+tactical_white="$(tput setaf 247)"
+tactical_black="$(tput setaf 238)"
+tactical_green="$(tput setaf 58)"
+okegreen="$(tput setaf 36)"
+
 nc="$(tput sgr0)"
 
 # exports
@@ -30,21 +35,31 @@ alias shred="shred -uvzf"
 alias nmap="nmap -vvv -Pn --dns-server 1.1.1.1"
 alias wget="wget -U 'noleak'"
 alias curl="curl --user-agent 'noleak'"
-alias neofetch_blue="neofetch --ascii_colors 4 4 0 4 --colors 4 4 4 4 --ascii_distro blackarch"
-alias neofetch="neofetch --ascii_distro blackarch"
+alias fastfetch_blue="fastfetch --ascii_colors 4 4 0 4 --colors 4 4 4 4 --ascii_distro blackarch"
+alias fastfetch="fastfetch --ascii_distro blackarch"
 
 # custom functions
 #
 
-ops-mode()
+hack()
 {
-  export PS1="\[$blue\]┌[\[$darkgrey\]\u@\[$cyan\]\H\[$blue]\]-[\[$cyan\]$(date +"%Y-%m-%d/%H:%M:%S")\[$blue\]]-[\[$cyan\]\w\[$blue\]]\n\[$blue\]└-\[$blue\]╼\[$cyan\]#>> \[$nc\]"
+  IP=$(curl -s http://ip-api.com/json/ | jq -r .query)
+  COUNTRY_CODE=$(curl -s http://ip-api.com/json/ | jq -r .countryCode)
+
+  if [[ $EUID -eq 0 ]]; then
+    export PS1="\[$blue\]┌──[\[$darkgrey\]0x0000@\[$okegreen\]\h\[$blue\]]\[$blue\]-[\[$okegreen\]\W\[$blue\]]-[\[$red\]CODE\[$nc\]:\[$okegreen\]$COUNTRY_CODE\[$nc\] \[$red\]EXIT$nc:\[$okegreen\]$IP\[$nc\]\[$blue\]]\n\[$blue\]└──╼\[$okegreen\] \# \[$nc\]"
+  else
+    export PS1="\[$blue\]┌──[\[$darkgrey\]\u@\[$okegreen\]\h\[$blue\]]\[$blue\]-[\[$okegreen\]\W\[$blue\]]-[\[$red\]CODE\[$nc\]:\[$okegreen\]$COUNTRY_CODE\[$nc\] \[$red\]EXIT$nc:\[$okegreen\]$IP\[$nc\]\[$blue\]]\n\[$blue\]└──╼\[$okegreen\] % \[$nc\]"
+  fi
 }
 
-curlwhois()
+
+tactical()
 {
-  curl -sL http://cli.fyi/$1 | jq .
+  export PS1="\[$tactical_black\]\W \[$tactical_green\]>\[$tactical_white\]>\[$tactical_green\]> \[$nc\]"
 }
+
+
 
 remoteshell()
 {
