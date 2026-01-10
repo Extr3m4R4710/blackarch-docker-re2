@@ -3,7 +3,7 @@
 
 This is a Dockerfile designed for penetration testing and development. It functions both as an environment for (colloquially speaking) hacker-style learning, such as studying shell code and assembly in C language, and as a pure coding environment.
 
-The vim editor has the blackarch-config-vim mod applied. Adding coc can make coding even more comfortable. It's also a good idea to directly connect Docker to VSCode for coding.
+The vim editor has the [blackarch-config-vim](https://github.com/BlackArch/blackarch-config-vim)モ mod applied. Adding [coc](https://github.com/neoclide/coc.nvim) can make coding even more comfortable. It's also a good idea to directly connect Docker to VSCode for coding.
 
 Please install extensions using vim-plug.
 
@@ -14,7 +14,7 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for test
 
 ## Why Was It Redesigned?
 
-The BlackArch container inherits the ArchLinux image. As a result, it could only use en_* type languages. This seemed to be unavoidable during the process of streamlining the ArchLinux container. For more details, please see here. Therefore, it was redesigned based on the Manjaro system, which is more multi-language friendly. This allows input of non-Latin characters (Japanese, Chinese, Korean, Russian, Arabic) in the console.
+The BlackArch container inherits the ArchLinux image. As a result, it could only use en_* type languages. This seemed to be unavoidable during the process of streamlining the ArchLinux container. For more details, please [see](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59) here. Therefore, it was redesigned based on the Manjaro system, which is more multi-language friendly. This allows input of non-Latin characters (Japanese, Chinese, Korean, Russian, Arabic) in the console.
 
 ## Tools & Package
 #### Defensive
