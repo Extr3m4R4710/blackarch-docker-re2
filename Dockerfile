@@ -4,6 +4,7 @@
 FROM manjarolinux/base
 
 # 設定と環境変数
+# Setting file and env-var
 ENV TERM=xterm-256color
 COPY .vim/ /root/.vim
 COPY .vimrc /root/
@@ -15,9 +16,11 @@ COPY .bashrc /root/
 #    } > /etc/resolv.conf
 
 # パッケージミラーとアップデート
+# Update to package and mirror
 RUN pacman-mirrors -f3 && pacman -Syyu --noconfirm
 
 # BlackArchセットアップとミラー設定
+# Setup to BlackArch and BlackArch Mirrors
 RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm
 
 #RUN  { \
@@ -48,10 +51,12 @@ RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm
 #RUN sed -i "/^\[blackarch\]/,/^Include/ s/SigLevel.*/SigLevel=Never/" /etc/pacman.conf
 
 # "Levon 'noptrix' Kayan"鍵の信頼と鍵のリロード
+# Reload to Noptrix's GPG Key and trust
 RUN echo "F9A6E68A711354D84A9B91637533BAFE69A25079:4:" >> /usr/share/pacman/keyrings/blackarch-trusted
 
 
 # セキュリティパッケージインストール
+# Installing to Security Packages
 RUN pacman -Syy && \
     pacman -S --noconfirm \
     tor torsocks proxychains-ng \
@@ -62,6 +67,7 @@ RUN pacman -Syy && \
     fastfetch finalrecon whois
 
 # 開発ツールインストール
+# Installing to DEV Tools
 RUN pacman -S --noconfirm \
     base-devel nasm clang \
     ruby lua nodejs npm python python-pip rust \
@@ -69,4 +75,5 @@ RUN pacman -S --noconfirm \
     vim zsh bash fish go
 
 # デフォルトシェル
+# Default Shell
 CMD ["/usr/bin/bash"]
