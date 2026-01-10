@@ -14,7 +14,7 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for test
 
 ## Why Was It Redesigned?
 
-The Blackarch container inherits the ArchLinux image. As a result, it could only use en_* type languages. This seemed to be unavoidable during the process of streamlining the ArchLinux container. For more details, please see here. Therefore, it was redesigned based on the Manjaro system, which is more multi-language friendly. This allows input of non-Latin characters (Japanese, Chinese, Korean, Russian, Arabic) in the console.
+The BlackArch container inherits the ArchLinux image. As a result, it could only use en_* type languages. This seemed to be unavoidable during the process of streamlining the ArchLinux container. For more details, please see here. Therefore, it was redesigned based on the Manjaro system, which is more multi-language friendly. This allows input of non-Latin characters (Japanese, Chinese, Korean, Russian, Arabic) in the console.
 
 ## Tools & Package
 #### Defensive
