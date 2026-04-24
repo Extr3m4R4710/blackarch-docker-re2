@@ -1,0 +1,23 @@
+services:
+  blackarch:
+    image: blackarch-re2
+    container_name: blackarch-re2
+    security_opt:
+      - seccomp=unconfined
+    ports:
+      - "2288:22/tcp"
+      - "8077:8080/tcp"
+    volumes:
+      - ./config_files/vim:/root/.vim
+      - ./config_files/vimrc:/root/.vimrc
+      - ./config_files/bashrc:/root/.bashrc
+      - blackarch-data:/root/workspace
+      - ./supervisord.conf:/etc/supervisor/supervisord.conf
+    environment:
+      - TERM=xterm-256color
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+volumes:
+  blackarch-data:
+    driver: local

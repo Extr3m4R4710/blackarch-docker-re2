@@ -55,3 +55,44 @@ python-pip                          : The PyPA recommended tool for installing P
 rustup                              : The Rust toolchain installer
 vim                                 : Vi Improved, a highly configurable, improved version of the vi text editor
 ```
+
+## 使い方
+
+### 前提条件
+- DockerとDocker Composeがインストールされていること
+
+### 起動
+```bash
+# イメージをビルドしてコンテナを起動
+docker-compose up -d --build
+```
+
+### アクセス方法
+
+**SSH接続:**
+```bash
+ssh root@localhost -p 2288
+# パスワード: blackarch
+```
+
+**Webブラウザ経由 (noVNC):**
+- URL: `http://localhost:8077`
+- パスワード: なし（設定変更可能）
+
+### コンテナ操作
+```bash
+# 停止
+docker-compose stop
+
+# 再起動
+docker-compose restart
+
+# 削除
+docker-compose down
+```
+
+### コンテナ内で作業
+```bash
+# コンテナに入る
+docker exec -it blackarch-docker-re2 /bin/bash
+```

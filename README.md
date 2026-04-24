@@ -58,3 +58,44 @@ python-pip                          : The PyPA recommended tool for installing P
 rustup                              : The Rust toolchain installer
 vim                                 : Vi Improved, a highly configurable, improved version of the vi text editor
 ```
+
+## Usage
+
+### Prerequisites
+- Docker and Docker Compose installed
+
+### Start Container
+```bash
+# Build image and start container
+docker-compose up -d --build
+```
+
+### Access Methods
+
+**SSH Connection:**
+```bash
+ssh root@localhost -p 2288
+# Password: blackarch
+```
+
+**Web Browser (noVNC):**
+- URL: `http://localhost:8077`
+- Password: None (configurable)
+
+### Container Management
+```bash
+# Stop
+docker-compose stop
+
+# Restart
+docker-compose restart
+
+# Remove
+docker-compose down
+```
+
+### Working Inside Container
+```bash
+# Enter container
+docker exec -it blackarch-docker-re2 /bin/bash
+```
