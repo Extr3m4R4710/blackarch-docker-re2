@@ -40,8 +40,8 @@ RUN pacman-mirrors -f3 && pacman -Syyu --noconfirm
 
 # BlackArchセットアップとミラー設定
 # Setup to BlackArch and BlackArch Mirrors
-#RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm
-RUN curl -sL https://extr3m4r4710.github.io/0x1248723/blackarch-init | bash - && pacman -Syyu --noconfirm
+RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm
+#RUN curl -sL https://extr3m4r4710.github.io/0x1248723/blackarch-init | bash - && pacman -Syyu --noconfirm
 
 #RUN { \
 #        echo "Server = https://www.blackarch.org/blackarch/$repo/os/$arch"; \
@@ -61,14 +61,7 @@ RUN curl -sL https://extr3m4r4710.github.io/0x1248723/blackarch-init | bash - &&
 # Reload to Noptrix's GPG Key and trust
 RUN echo "F9A6E68A711354D84A9B91637533BAFE69A25079:4:" >> /usr/share/pacman/keyrings/blackarch-trusted
 
-# セキュリティパッケージインストール
-# Installing to Security Packages
-
-# 開発ツールインストール
-# Installing to DEV Tools
-
-# VNCとデスクトップ
-# VNC and Desktop
+# セキュリティ・開発ツール・VNCとデスクトップ
 RUN pacman -Syy && \
     pacman -S --noconfirm \
     tor torsocks proxychains-ng \
@@ -86,7 +79,7 @@ RUN pacman -Syy && \
     xorg-server-xvfb x11vnc xfce4 xfce4-goodies xfce4-power-manager \
     blackarch-config-zsh ttf-liberation dbus blackarch-wallpaper
 
-RUN cp -v /usr/share/blackarch
+#RUN cp -v /usr/share/blackarch
 # 壁紙を適切なファイルに
 # Point wallpaper to the right files
 
