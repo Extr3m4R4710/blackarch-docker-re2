@@ -6,6 +6,12 @@ vimには[blackarch-config-vim](https://github.com/BlackArch/blackarch-config-vi
 
 拡張機能はvim-plugでインストールしてください。
 
+# 使用例
+```bash
+docker build -t blackarch-re2 .
+docker run -it --rm blackarch-re2 bash
+```
+
 ## What is BlackArch
 ### 抜粋(blackarch.orgより)
 BlackArch Linuxは、侵入テストを行うテスターとセキュリティ研究者向けのArch Linuxベースの侵入テストディストリビューションです。リポジトリには2600を超えるツールが含まれています。ツールは個別に、またはグループでインストールでき、BlackArch Linuxは既存のArchのインストールと互換性があります。
