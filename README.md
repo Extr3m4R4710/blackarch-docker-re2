@@ -16,11 +16,11 @@ docker run -it --rm blackarch-re2 bash
 ## What is BlackArch
 ### Excerpt (from blackarch.org)
 
-BlackArch Linux is an Arch Linux-based penetration testing distribution for testers and security researchers. The repository contains over 2,600 tools. Tools can be installed individually or in groups, and BlackArch Linux is compatible with existing Arch installations.
+BlackArch Linux is an ArchLinux-based penetration testing distribution for testers and security researchers. The repository contains over 2,600 tools. Tools can be installed individually or in groups, and BlackArch Linux is compatible with existing Arch installations.
 
 ## Why Was It Redesigned?
 
-BlackArch Linux is based on Arch Linux, so this image also uses the upstream ArchLinux image as its base.
+BlackArch Linux is based on ArchLinux, so this image also uses the upstream ArchLinux image as its base.
 
 However, to keep the image small, the ArchLinux image's `/etc/pacman.conf` uses `NoExtract` rules that skip extracting locale definitions (`/usr/share/i18n/locales/*` and `/usr/share/locale/*`), so only en_* type languages can be used (for more details, please [see](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59) here).
 
@@ -40,7 +40,7 @@ nmap                                : Utility for network discovery and security
 sqlmap                              : Automatic SQL injection and database takeover tool
 zmap                                : Fast network scanner designed for Internet-wide network surveys
 ```
-#### exploitation
+#### Exploitation
 ```
 metasploit                          : Advanced open-source platform for developing, testing, and using exploit code
 msfdb                               : Manage the metasploit framework database. This package known as msfdb-blackarch

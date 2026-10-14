@@ -17,7 +17,7 @@ docker run -it --rm blackarch-re2 bash
 BlackArch Linuxは、侵入テストを行うテスターとセキュリティ研究者向けのArch Linuxベースの侵入テストディストリビューションです。リポジトリには2600を超えるツールが含まれています。ツールは個別に、またはグループでインストールでき、BlackArch Linuxは既存のArchのインストールと互換性があります。
 
 ## なぜ再設計したのか？
-BlackArch LinuxはArch Linuxベースのため、本イメージも上流のArchLinuxイメージをベースにしています。
+BlackArch LinuxはArchLinuxベースのため、本イメージも上流のArchLinuxイメージをベースにしています。
 
 ただしArchLinuxイメージは軽量化のため、`/etc/pacman.conf`の`NoExtract`でロケール定義(`/usr/share/i18n/locales/*`と`/usr/share/locale/*`)を展開せず、en_* タイプの言語**のみ**を使用できます(詳しくは[こちら](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59))。
 
@@ -37,7 +37,7 @@ nmap                                : Utility for network discovery and security
 sqlmap                              : Automatic SQL injection and database takeover tool
 zmap                                : Fast network scanner designed for Internet-wide network surveys
 ```
-#### exploitation
+#### Exploitation
 ```
 metasploit                          : Advanced open-source platform for developing, testing, and using exploit code
 msfdb                               : Manage the metasploit framework database. This package known as msfdb-blackarch
