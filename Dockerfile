@@ -42,19 +42,20 @@ RUN sed -i '/^NoExtract/ {/locale\|i18n/d}' /etc/pacman.conf
 
 # パッケージのアップデート
 # Update packages
-RUN pacman -Syu --noconfirm
+RUN pacman -Syu --noconfirm && rm -rf /var/cache/pacman/pkg/*
 
 # 剥がされたglibcのロケール定義を復元、多言語ロケールを生成
 # Restore stripped glibc locale definitions and generate multilingual locales
 RUN pacman -S --noconfirm glibc && \
     sed -i 's/^#\(en_US.UTF-8\|ja_JP.UTF-8\|zh_CN.UTF-8\|zh_TW.UTF-8\|ko_KR.UTF-8\|ru_RU.UTF-8\|ar_SA.UTF-8\) /\1 /' /etc/locale.gen && \
     locale-gen && \
-    echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+    echo 'LANG=en_US.UTF-8' > /etc/locale.conf && \
+    rm -rf /var/cache/pacman/pkg/*
 ENV LANG=en_US.UTF-8
 
 # BlackArchセットアップとミラー設定
 # Setup to BlackArch and BlackArch Mirrors
-RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm
+RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm && rm -rf /var/cache/pacman/pkg/*
 #RUN curl -sL https://extr3m4r4710.github.io/0x1248723/blackarch-init | bash - && pacman -Syyu --noconfirm
 
 #RUN { \
@@ -91,7 +92,8 @@ RUN pacman -Syy && \
     openssh git vim tmux screen \
     supervisor iw man mlocate pciutils less bash-completion novnc \
     xorg-server-xvfb x11vnc xfce4 xfce4-goodies xfce4-power-manager \
-    blackarch-config-zsh ttf-liberation dbus blackarch-wallpaper
+    blackarch-config-zsh ttf-liberation dbus blackarch-wallpaper && \
+    rm -rf /var/cache/pacman/pkg/*
 
 #RUN cp -v /usr/share/blackarch
 # 壁紙を適切なファイルに
