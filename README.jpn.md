@@ -17,7 +17,11 @@ docker run -it --rm blackarch-re2 bash
 BlackArch Linuxは、侵入テストを行うテスターとセキュリティ研究者向けのArch Linuxベースの侵入テストディストリビューションです。リポジトリには2600を超えるツールが含まれています。ツールは個別に、またはグループでインストールでき、BlackArch Linuxは既存のArchのインストールと互換性があります。
 
 ## なぜ再設計したのか？
-BlackarchコンテナはArchLinuxイメージを継承しています。がって、en_* タイプの言語**のみ**を使用できます。これは、ArchLinuxコンテナーの軽量化の過程で止む終えなかったようです。詳しくは[こちらをご覧ください](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59)。そこで、多言語対応で使いやすいManjaroシステムをベースに再設計しました。これにより、非ラテン文字(日本語、中国語、韓国語、ロシア語、アラビア語)をコンソールに入力できます
+BlackArch LinuxはArch Linuxベースのため、本イメージも上流のArchLinuxイメージをベースにしています。
+
+ただしArchLinuxイメージは軽量化のため、`/etc/pacman.conf`の`NoExtract`でロケール定義(`/usr/share/i18n/locales/*`と`/usr/share/locale/*`)を展開せず、en_* タイプの言語**のみ**を使用できます(詳しくは[こちら](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59))。
+
+そこでDockerfile内でこの除外ルールを解除し、glibcを再インストールして剥がされたロケール定義を復元したうえで、`locale-gen`により多言語ロケールを生成しています。これにより、非ラテン文字(日本語、中国語、韓国語、ロシア語、アラビア語)をコンソールに入力・表示できます
 
 ## Tools & Package
 #### Defensive

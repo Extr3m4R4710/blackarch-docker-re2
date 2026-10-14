@@ -20,7 +20,11 @@ BlackArch Linux is an Arch Linux-based penetration testing distribution for test
 
 ## Why Was It Redesigned?
 
-The BlackArch container inherits the ArchLinux image. As a result, it could only use en_* type languages. This seemed to be unavoidable during the process of streamlining the ArchLinux container. For more details, please [see](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59) here. Therefore, it was redesigned based on the Manjaro system, which is more multi-language friendly. This allows input of non-Latin characters (Japanese, Chinese, Korean, Russian, Arabic) in the console.
+BlackArch Linux is based on Arch Linux, so this image also uses the upstream ArchLinux image as its base.
+
+However, to keep the image small, the ArchLinux image's `/etc/pacman.conf` uses `NoExtract` rules that skip extracting locale definitions (`/usr/share/i18n/locales/*` and `/usr/share/locale/*`), so only en_* type languages can be used (for more details, please [see](https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/59) here).
+
+Therefore, the Dockerfile removes those exclusion rules, reinstalls glibc to restore the stripped locale definitions, and runs `locale-gen` to generate multilingual locales. This allows non-Latin characters (Japanese, Chinese, Korean, Russian, Arabic) to be entered and displayed in the console.
 
 ## Tools & Package
 #### Defensive

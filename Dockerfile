@@ -1,6 +1,6 @@
 ## If you have problems with blackarch's mirror server, please see here
 ## https://raw.githubusercontent.com/Extr3m4R4710/BlackArchMirrors/master/blackarch-mirrors
-FROM manjarolinux/base:latest
+FROM archlinux:latest
 
 # 設定と環境変数
 # Setting file and env-var
@@ -34,9 +34,23 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 #        echo "nameserver 1.0.0.1"; \
 #    } > /etc/resolv.conf
 
-# パッケージミラーとアップデート
-# Update to package and mirror
-RUN pacman-mirrors -f3 && pacman -Syyu --noconfirm
+# ロケール定義(i18n/locale)の展開を許可
+# Allow extracting locale definition files
+# archlinuxイメージは/etc/pacman.confのNoExtractでロケール定義を除外しているため、
+# 多言語対応にはこの除外ルールを解除する必要がある
+RUN sed -i '/^NoExtract/ {/locale\|i18n/d}' /etc/pacman.conf
+
+# パッケージのアップデート
+# Update packages
+RUN pacman -Syu --noconfirm
+
+# 剥がされたglibcのロケール定義を復元、多言語ロケールを生成
+# Restore stripped glibc locale definitions and generate multilingual locales
+RUN pacman -S --noconfirm glibc && \
+    sed -i 's/^#\(en_US.UTF-8\|ja_JP.UTF-8\|zh_CN.UTF-8\|zh_TW.UTF-8\|ko_KR.UTF-8\|ru_RU.UTF-8\|ar_SA.UTF-8\) /\1 /' /etc/locale.gen && \
+    locale-gen && \
+    echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+ENV LANG=en_US.UTF-8
 
 # BlackArchセットアップとミラー設定
 # Setup to BlackArch and BlackArch Mirrors

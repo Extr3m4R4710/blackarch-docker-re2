@@ -3,16 +3,16 @@
 fastfetch --logo blackarch
 # colors
 # --------
-darkgrey="$(tput setaf 8)"
-white="$(tput setaf 15)"
-blue="$(tput setaf 12)"
-cyan="$(tput setaf 14)"
-red="$(tput setaf 9)"
-green="$(tput setaf 35)"
-tactical_white="$(tput setaf 247)"
-tactical_black="$(tput setaf 238)"
-tactical_green="$(tput setaf 58)"
-okegreen="$(tput setaf 36)"
+darkgrey="$(tput bold ; tput setaf 8)"
+white="$(tput bold ; tput setaf 15)"
+blue="$(tput bold ; tput setaf 12)"
+cyan="$(tput bold ; tput setaf 14)"
+red="$(tput bold ; tput setaf 9)"
+green="$(tput bold ; tput setaf 35)"
+tactical_white="$(tput bold ; tput setaf 247)"
+tactical_black="$(tput bold ; tput setaf 238)"
+tactical_green="$(tput bold ; tput setaf 58)"
+okegreen="$(tput bold ; tput setaf 36)"
 
 nc="$(tput sgr0)"
 
@@ -37,8 +37,8 @@ alias ls="ls --color"
 alias vi="vim"
 alias shred="shred -uvzf"
 alias nmap="nmap -vvv -Pn --dns-server 1.1.1.1"
-alias wget="wget -U 'noleak'"
-alias curl="curl --user-agent 'noleak'"
+alias wget="wget -U  'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ChatGPT-User/1.0; +https://openai.com/bot)'""
+alias curl="curl --user-agent 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ChatGPT-User/1.0; +https://openai.com/bot)'"
 alias fastfetch_blue="fastfetch --logo blackarch --logo-color-1 blue --logo-color-2 blue --logo-color-3 black --logo-color-4 blue --color-keys blue --color-title blue"
 alias fastfetch="fastfetch --logo blackarch"
 
