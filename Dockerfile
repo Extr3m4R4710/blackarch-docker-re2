@@ -14,7 +14,7 @@ COPY ./config_files/bashrc /root/.bashrc
 COPY ./config_files/themes /usr/share/themes
 COPY ./config_files/icons /usr/share/icons
 
-#RUN cp -r /etc/skel/. /root/.
+#RUN rm -f /usr/bin/websockify
 RUN rm -f /usr/bin/websockify
 
 ## Set blackarch user config and allow ssh root login
@@ -22,10 +22,10 @@ RUN echo 'root:blackarch' | chpasswd && \
     echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 
 # Expose needed ports
-EXPOSE 22/tcp
+EXPOSE 2222/tcp
 EXPOSE 8080/tcp
 
-# Set operable environment
+# Set operable environment/
 ENV DISPLAY=:0
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
@@ -94,6 +94,12 @@ RUN pacman -Syy && \
     xorg-server-xvfb x11vnc xfce4 xfce4-goodies xfce4-power-manager \
     blackarch-config-zsh ttf-liberation dbus blackarch-wallpaper && \
     rm -rf /var/cache/pacman/pkg/*
+
+# Go製プログラムインストール
+RUN CGO_ENABLED=0 go install github.com/davegallant/vpngate@latest
+
+# ssh ローカルキー発行
+RUN ssh-keygen -A
 
 #RUN cp -v /usr/share/blackarch
 # 壁紙を適切なファイルに
