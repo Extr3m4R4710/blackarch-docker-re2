@@ -7,7 +7,7 @@ The vim editor has the [blackarch-config-vim](https://github.com/BlackArch/black
 
 Please install extensions using vim-plug.
 
-# Usage
+# QuickStart
 ```bash
 docker build -t blackarch-re2 .
 docker run -it --rm blackarch-re2 bash
