@@ -6,7 +6,7 @@ vimには[blackarch-config-vim](https://github.com/BlackArch/blackarch-config-vi
 
 拡張機能はvim-plugでインストールしてください。
 
-# 使用例
+# クイックスタート
 ```bash
 docker build -t blackarch-re2 .
 docker run -it --rm blackarch-re2 bash
