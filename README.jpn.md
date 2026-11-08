@@ -1,4 +1,7 @@
 JPN | [**ENG**](https://github.com/Extr3m4R4710/blackarch-docker-re2/blob/main/README.md)
+
+![](img/Screenshot_2026-11-08_08-41-54.png)
+
 ## このイメージについて
 このイメージは、侵入テストと開発用に設計されたDockerfileです。例えばC言語で記述されたシェルコードとアセンブリの学習といった(俗に言う)ハッカーの嗜みに加えて純粋なコーディング環境としても機能します。
 

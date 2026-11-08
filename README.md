@@ -1,4 +1,7 @@
 [**JPN**](https://github.com/Extr3m4R4710/blackarch-docker-re2/blob/main/README.jpn.md) | ENG
+
+![](img/Screenshot_2026-11-08_08-41-54.png)
+
 ## About This Image
 
 This is a Dockerfile designed for penetration testing and development. It functions both as an environment for (colloquially speaking) hacker-style learning, such as studying shell code and assembly in C language, and as a pure coding environment.
