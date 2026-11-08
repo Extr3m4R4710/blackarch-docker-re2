@@ -1,5 +1,5 @@
 ## If you have problems with blackarch's mirror server, please see here
-## https://raw.githubusercontent.com/Extr3m4R4710/BlackArchMirrors/master/blackarch-mirrors
+## https://blackarch.org/mirrors.html
 FROM archlinux:latest
 
 # 設定と環境変数
@@ -55,19 +55,22 @@ ENV LANG=en_US.UTF-8
 
 # BlackArchセットアップとミラー設定
 # Setup to BlackArch and BlackArch Mirrors
-RUN curl -sL blackarch.org/strap.sh | bash - && pacman -Syyu --noconfirm && rm -rf /var/cache/pacman/pkg/*
+RUN curl -fsSL https://blackarch.org/strap.sh | bash
 #RUN curl -sL https://extr3m4r4710.github.io/0x1248723/blackarch-init | bash - && pacman -Syyu --noconfirm
 
-#RUN { \
-#        echo "Server = https://www.blackarch.org/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://ftp.halifax.rwth-aachen.de/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://www.ftp.ne.jp/Linux/packages/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://ftp.kddilabs.jp/Linux/packages/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://download.nus.edu.sg/mirror/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://mirror.zetup.net/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://ftp.linux.org.tr/blackarch/$repo/os/$arch"; \
-#        echo "Server = https://mirror.math.princeton.edu/pub/blackarch/$repo/os/$arch"; \
-#    } > /etc/pacman.d/blackarch-mirrorlist
+# 公式ミラーリストのHTTPSミラーを順に試し、応答したものだけを残す
+# Keep only the HTTPS mirrors that actually respond.
+RUN curl -fsSL https://blackarch.org/blackarch-mirrorlist -o /tmp/m && \
+    : > /etc/pacman.d/blackarch-mirrorlist && \
+    for u in $(grep -o 'https://[^ ]*' /tmp/m); do \
+        if curl -fs -r 0-0 -o /dev/null --connect-timeout 3 --max-time 10 \
+            "$(echo "$u" | sed 's/\$repo/blackarch/;s/\$arch/x86_64/')/blackarch.db"; then \
+            echo "Server = $u" >> /etc/pacman.d/blackarch-mirrorlist; \
+        fi; \
+    done && \
+    pacman -Syyu --noconfirm && \
+    rm -rf /var/cache/pacman/pkg/* /tmp/m
+
 
 # pacman署名チェックの緩和
 #RUN sed -i "/^\[blackarch\]/,/^Include/ s/SigLevel.*/SigLevel=Never/" /etc/pacman.conf
